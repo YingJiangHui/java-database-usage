@@ -4,6 +4,10 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <properties resource="jdbc.properties" />
+    <typeAliases>
+        <package name="ying.example.mybatis"/>
+        <!--        <typeAlias type="ying.example.mybatis.Account" alias="Account"/>-->
+    </typeAliases>
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
