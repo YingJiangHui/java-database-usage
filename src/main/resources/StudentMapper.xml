@@ -73,4 +73,12 @@
             </if>
         </where>
     </select>
+    <select id="selectByMapResultMap" resultType="map">
+        select * from Student
+        <where>
+            <if test="map.age != null">
+                and age = #{map.age}
+            </if>
+        </where>
+    </select>
 </mapper>

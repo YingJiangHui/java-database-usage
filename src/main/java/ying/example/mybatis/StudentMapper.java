@@ -27,5 +27,6 @@ public interface StudentMapper {
     public Student[] selectByObjectV2(@Param("student") Student student);
 
     public Student[] selectByMap(@Param("map") HashMap<String, Object> map);
+    public HashMap<String,Object>[] selectByMapResultMap(@Param("map") HashMap<String, Object> map);
 
 }
