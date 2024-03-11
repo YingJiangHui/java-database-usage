@@ -76,4 +76,14 @@ public class DemoDifferenceArgsTest {
         HashMap[] studentMaps = studentMapper.selectByMapResultMap(map);
         Arrays.stream(studentMaps).forEach(System.out::println);
     }
+
+    @Test
+    public void selectStudentByOne() throws IOException {
+        SqlSession session = SqlSessionFactoryUtil.getSession();
+        StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+        Student student = new Student();
+        student.setClassName("B");
+        Student[] students = studentMapper.selectStudentByOne(student);
+        Arrays.stream(students).forEach(System.out::println);
+    }
 }

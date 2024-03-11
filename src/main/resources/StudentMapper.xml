@@ -81,4 +81,21 @@
             </if>
         </where>
     </select>
+
+    <select id="selectStudentByOne" parameterType="Student">
+        select * from Student
+        <where>
+            <choose>
+                <when test="student.name != null">
+                    and name = #{student.name}
+                </when>
+                <when test="student.age != 0">
+                    and age = #{student.age}
+                </when>
+                <when test="student.className != null">
+                    and class_name = #{student.className}
+                </when>
+            </choose>
+        </where>
+    </select>
 </mapper>

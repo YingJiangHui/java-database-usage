@@ -38,4 +38,12 @@ public class Student {
                 ", className='" + className + '\'' +
                 '}';
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getClassName() {
+        return className;
+    }
 }

@@ -1,8 +1,6 @@
 package ying.example.mybatis;
 
 import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
 
 import java.util.HashMap;
 
@@ -28,5 +26,6 @@ public interface StudentMapper {
 
     public Student[] selectByMap(@Param("map") HashMap<String, Object> map);
     public HashMap<String,Object>[] selectByMapResultMap(@Param("map") HashMap<String, Object> map);
+    public Student[] selectStudentByOne(@Param("student") Student student);
 
 }
