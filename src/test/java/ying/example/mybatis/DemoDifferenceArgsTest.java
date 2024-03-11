@@ -1,17 +1,12 @@
 package ying.example.mybatis;
 
-import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 import ying.example.utils.SqlSessionFactoryUtil;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Arrays;
-
-import static org.junit.Assert.*;
+import java.util.HashMap;
 
 public class DemoDifferenceArgsTest {
     @Test
@@ -42,5 +37,33 @@ public class DemoDifferenceArgsTest {
         StudentMapper studentMapper = session.getMapper(StudentMapper.class);
         Student[] student = studentMapper.selectStudentByNameAndAgeV2("小明",10);
         Arrays.stream(student).forEach(System.out::println);
+    }
+
+    @Test
+    public void SelectByObject() throws IOException {
+        SqlSession session = SqlSessionFactoryUtil.getSession();
+        StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+        Student student = new Student();
+        student.setAge(10);
+        Student[] students = studentMapper.selectByObject(student);
+        Arrays.stream(students).forEach(System.out::println);
+    }
+    @Test
+    public void SelectByObjectV2() throws IOException {
+        SqlSession session = SqlSessionFactoryUtil.getSession();
+        StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+        Student student = new Student();
+        student.setAge(10);
+        Student[] students = studentMapper.selectByObjectV2(student);
+        Arrays.stream(students).forEach(System.out::println);
+    }
+    @Test
+    public void SelectByMap() throws IOException {
+        SqlSession session = SqlSessionFactoryUtil.getSession();
+        StudentMapper studentMapper = session.getMapper(StudentMapper.class);
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("age",20);
+        Student[] students = studentMapper.selectByMap(map);
+        Arrays.stream(students).forEach(System.out::println);
     }
 }
