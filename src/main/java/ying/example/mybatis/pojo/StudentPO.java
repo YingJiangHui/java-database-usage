@@ -50,4 +50,15 @@ public class StudentPO {
     public void setClassName(String className) {
         this.className = className;
     }
+
+    @Override
+    public String toString() {
+        return "StudentPO{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", country='" + country + '\'' +
+                ", className='" + className + '\'' +
+                '}';
+    }
 }

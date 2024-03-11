@@ -24,5 +24,6 @@
     </environments>
     <mappers>
         <mapper resource="StudentMapper.xml"/>
+        <mapper resource="ying/example/mybatis/mapper/StudentPOMapper.xml"/>
     </mappers>
 </configuration>
