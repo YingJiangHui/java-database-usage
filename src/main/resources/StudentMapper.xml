@@ -3,16 +3,22 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="ying.example.mybatis.StudentMapper">
+    <resultMap id="studentResultMap" type="Student">
+        <id property="id" column="id" />
+        <result property="name" column="name"/>
+        <result property="age" column="age"/>
+        <result property="className" column="class_name"/>
+    </resultMap>
     <select id="selectStudent" resultType="Student">
         select * from Student where id = #{id}
     </select>
-    <select id="selectStudentByNameIfPresent" resultType="Student">
+    <select id="selectStudentByNameIfPresent" resultType="Student" resultMap="studentResultMap">
         select * from Student where
         <if test="name != null">
             name = #{name}
         </if>
     </select>
-    <select id="selectStudentByNameIfPresentV2" resultType="Student">
+    <select id="selectStudentByNameIfPresentV2" resultType="Student" resultMap="studentResultMap">
         select * from Student
         <where>
             <if test="name != null">
@@ -21,7 +27,7 @@
         </where>
 
     </select>
-    <select id="selectStudentByNameAndAge" resultType="Student">
+    <select id="selectStudentByNameAndAge" resultType="Student" resultMap="studentResultMap">
         select * from Student
         <where>
             <if test="arg0 != null">
@@ -32,7 +38,7 @@
             </if>
         </where>
     </select>
-    <select id="selectStudentByNameAndAgeV2" resultType="Student">
+    <select id="selectStudentByNameAndAgeV2" resultType="Student" resultMap="studentResultMap">
         select * from Student
         <where>
             <if test="name != null">
@@ -43,7 +49,7 @@
             </if>
         </where>
     </select>
-    <select id="selectByObject" resultType="Student">
+    <select id="selectByObject" resultType="Student" resultMap="studentResultMap">
         select * from Student
         <where>
             <if test="age != null">
@@ -51,7 +57,7 @@
             </if>
         </where>
     </select>
-    <select id="selectByObjectV2" parameterType="Student" resultType="Student">
+    <select id="selectByObjectV2" parameterType="Student" resultMap="studentResultMap">
         select * from Student
         <where>
             <if test="student.age != null">
