@@ -2,6 +2,7 @@ package ying.example.mybatis.mapper;
 
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.session.RowBounds;
 import ying.example.mybatis.pojo.StudentPO;
 import ying.example.mybatis.pojo.StudentPOExample;
 
@@ -15,6 +16,8 @@ public interface StudentPOMapper {
     int insert(StudentPO row);
 
     int insertSelective(StudentPO row);
+
+    List<StudentPO> selectByExampleWithRowbounds(StudentPOExample example, RowBounds rowBounds);
 
     List<StudentPO> selectByExample(StudentPOExample example);
 

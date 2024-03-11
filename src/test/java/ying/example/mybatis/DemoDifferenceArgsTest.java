@@ -86,4 +86,5 @@ public class DemoDifferenceArgsTest {
         Student[] students = studentMapper.selectStudentByOne(student);
         Arrays.stream(students).forEach(System.out::println);
     }
+
 }

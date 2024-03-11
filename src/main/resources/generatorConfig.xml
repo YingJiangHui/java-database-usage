@@ -6,6 +6,7 @@
 <generatorConfiguration>
     <!-- context id 可以自由定义 targetRuntime 选择 Mybatis3 -->
     <context id="jirengu" targetRuntime="Mybatis3">
+        <plugin type="org.mybatis.generator.plugins.RowBoundsPlugin"/>
 
         <!-- 注释信息配置 -->
         <commentGenerator>
@@ -16,7 +17,8 @@
         </commentGenerator>
 
         <!--连接数据库信息-->
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/school" userId="root" password="123456"/>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://127.0.0.1:3306/school"
+                        userId="root" password="123456"/>
 
         <!--自动生成的 POJO 类存放包路径 -->
         <javaModelGenerator targetPackage="ying.example.mybatis.pojo" targetProject="src/main/java">
@@ -27,7 +29,7 @@
         </sqlMapGenerator>
 
         <!--自动生成的*Mapper.java存放路径 -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="ying.example.mybatis.mapper" targetProject="src/main/java" >
+        <javaClientGenerator type="XMLMAPPER" targetPackage="ying.example.mybatis.mapper" targetProject="src/main/java">
         </javaClientGenerator>
 
         <!-- 逆向解析的表 domainObjectName 是生成的 POJO 类类名 -->
