@@ -1,6 +1,8 @@
 package ying.example.mybatis.pojo;
 
-public class StudentPO {
+import java.io.Serializable;
+
+public class StudentPO implements Serializable {
     private Integer id;
 
     private String name;

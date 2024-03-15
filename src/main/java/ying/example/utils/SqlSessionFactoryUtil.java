@@ -9,10 +9,13 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class SqlSessionFactoryUtil {
+    static SqlSessionFactory sqlSessionFactory;
     public static SqlSession getSession() throws IOException {
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        if(sqlSessionFactory==null){
+            String resource = "mybatis-config.xml";
+            InputStream inputStream = Resources.getResourceAsStream(resource);
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        }
         SqlSession session =sqlSessionFactory.openSession();
         return session;
     }
